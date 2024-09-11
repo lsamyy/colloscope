@@ -1,0 +1,200 @@
+{
+    "m1": {
+        "jour": "Jeudi",
+        "heure": "16:30",
+        "professeur": "Aubert",
+        "matiere": "Mathématiques"
+    },
+    "m2": {
+        "jour": "Lundi",
+        "heure": "15:30",
+        "professeur": "Maillot",
+        "matiere": "Mathématiques"
+    },
+    "m3": {
+        "jour": "Lundi",
+        "heure": "15:30",
+        "professeur": "Brunault",
+        "matiere": "Mathématiques"
+    },
+    "m4": {
+        "jour": "Jeudi",
+        "heure": "17:30",
+        "professeur": "Aubert",
+        "matiere": "Mathématiques"
+    },
+    "m5": {
+        "jour": "Lundi",
+        "heure": "16:30",
+        "professeur": "Maillot",
+        "matiere": "Mathématiques"
+    },
+    "m6": {
+        "jour": "Lundi",
+        "heure": "16:30",
+        "professeur": "Brunault",
+        "matiere": "Mathématiques"
+    },
+    "m7": {
+        "jour": "Lundi",
+        "heure": "15:30",
+        "professeur": "Lu",
+        "matiere": "Mathématiques"
+    },
+    "m8": {
+        "jour": "Lundi",
+        "heure": "16:30",
+        "professeur": "Lu",
+        "matiere": "Mathématiques"
+    },
+    "p1": {
+        "jour": "Vendredi",
+        "heure": "16:30",
+        "professeur": "AR",
+        "matiere": "Philosophie"
+    },
+    "p2": {
+        "jour": "Jeudi",
+        "heure": "16:30",
+        "professeur": "Inconnu",
+        "matiere": "Tryptique"
+    },
+    "p3": {
+        "jour": "Vendredi",
+        "heure": "17:30",
+        "professeur": "AR",
+        "matiere": "Philosophie"
+    },
+    "p4": {
+        "jour": "Jeudi",
+        "heure": "17:30",
+        "professeur": "Inconnu",
+        "matiere": "Tryptique"
+    },
+    "d1": {
+        "jour": "Jeudi",
+        "heure": "16:30",
+        "professeur": "Groninger",
+        "matiere": "Allemand"
+    },
+    "d2": {
+        "jour": "Jeudi",
+        "heure": "18:30",
+        "professeur": "Groninger",
+        "matiere": "Allemand"
+    },
+    "f1": {
+        "jour": "Mercredi",
+        "heure": "18:30",
+        "professeur": "DZ",
+        "matiere": "Lettres"
+    },
+    "f2": {
+        "jour": "Jeudi",
+        "heure": "17:30",
+        "professeur": "CC",
+        "matiere": "Lettres"
+    },
+    "f3": {
+        "jour": "Jeudi",
+        "heure": "16:30",
+        "professeur": "DZ",
+        "matiere": "Lettres"
+    },
+    "f4": {
+        "jour": "Jeudi",
+        "heure": "18:30",
+        "professeur": "CC",
+        "matiere": "Lettres"
+    },
+    "sh1": {
+        "jour": "Mardi",
+        "heure": "18:30",
+        "professeur": "XE",
+        "matiere": "ESH"
+    },
+    "sh2": {
+        "jour": "Vendredi",
+        "heure": "15:30",
+        "professeur": "XE",
+        "matiere": "ESH"
+    },
+    "sh3": {
+        "jour": "Vendredi",
+        "heure": "16:30",
+        "professeur": "XE",
+        "matiere": "ESH"
+    },
+    "sh4": {
+        "jour": "Jeudi",
+        "heure": "17:30",
+        "professeur": "AW",
+        "matiere": "ESH"
+    },
+    "h1": {
+        "jour": "Mercredi",
+        "heure": "14:30",
+        "professeur": "N.B",
+        "matiere": "HGG"
+    },
+    "h2": {
+        "jour": "Mercredi",
+        "heure": "18:30",
+        "professeur": "N.B",
+        "matiere": "HGG"
+    },
+    "h3": {
+        "jour": "Mardi",
+        "heure": "18:30",
+        "professeur": "A.R",
+        "matiere": "HGG"
+    },
+    "h4": {
+        "jour": "Vendredi",
+        "heure": "18:30",
+        "professeur": "A.R",
+        "matiere": "HGG"
+    },
+    "e1": {
+        "jour": "Vendredi",
+        "heure": "15:30",
+        "professeur": "SG",
+        "matiere": "Espagnol"
+    },
+    "e2": {
+        "jour": "Vendredi",
+        "heure": "16:30",
+        "professeur": "SG",
+        "matiere": "Espagnol"
+    },
+    "Ru/Ch": {
+        "jour": "No Info",
+        "heure": "00:00",
+        "professeur": "No Info",
+        "matiere": "Russe / Chinois"
+    },
+    "a1": {
+        "jour": "Lundi",
+        "heure": "15:30",
+        "professeur": "V.Guerin",
+        "matiere": "Anglais"
+    },
+    "a2": {
+        "jour": "Lundi",
+        "heure": "16:30",
+        "professeur": "V.Guerin",
+        "matiere": "Anglais"
+    },
+    "a3": {
+        "jour": "Lundi",
+        "heure": "17:30",
+        "professeur": "V.Guerin",
+        "matiere": "Anglais"
+    },
+    "a4": {
+        "jour": "Lundi",
+        "heure": "18:30",
+        "professeur": "V.Guerin",
+        "matiere": "Anglais"
+    }
+}

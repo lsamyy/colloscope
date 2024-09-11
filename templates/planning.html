@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning des colles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        body.show {
+            opacity: 1;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Planning pour {{ group }}</h1>
+
+    <h2>Semaine du {{ week['start_date'] }} au {{ week['end_date'] }}</h2>
+
+    {% if schedule %}
+        <ul>
+        {% for creneau in schedule %}
+            <li>{{ creneau['matiere'] }} avec {{ creneau['professeur'] }} le {{ creneau['jour'] }} à {{ creneau['heure'] }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun créneau trouvé pour cette semaine.</p>
+    {% endif %}
+
+    <a href="/">Retour à l'accueil</a>
+
+    <script>
+        // When the page loads, we add the 'show' class to trigger the fade-in effect
+        window.onload = function() {
+            document.body.classList.add('show');
+        };
+    </script>
+</body>
+</html>
