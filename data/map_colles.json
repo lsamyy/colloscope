@@ -167,11 +167,11 @@
         "professeur": "SG",
         "matiere": "Espagnol"
     },
-    "Ru/Ch": {
-        "jour": "No Info",
+    "Ru-Ch": {
+        "jour": "No Info sur colloscope",
         "heure": "00:00",
         "professeur": "No Info",
-        "matiere": "Russe / Chinois"
+        "matiere": "Russe - Chinois"
     },
     "a1": {
         "jour": "Lundi",
@@ -196,5 +196,11 @@
         "heure": "18:30",
         "professeur": "V.Guerin",
         "matiere": "Anglais"
+    }
+    "itali": {
+        "jour": "Pas d'infos",
+        "heure": "0ß:00",
+        "professeur": "Pas d'infos",
+        "matiere": "Italien (colloscope vide)"
     }
 }
