@@ -168,7 +168,7 @@
         "matiere": "Espagnol"
     },
     "Ru-Ch": {
-        "jour": "No Info sur colloscope",
+        "jour": "Dimanche",
         "heure": "00:00",
         "professeur": "No Info",
         "matiere": "Russe - Chinois"
@@ -198,7 +198,7 @@
         "matiere": "Anglais"
     }
     "itali": {
-        "jour": "Pas d'infos",
+        "jour": "Dimanche",
         "heure": "00:00",
         "professeur": "Pas d'infos",
         "matiere": "Italien (colloscope vide)"
