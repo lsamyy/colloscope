@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning des DS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .ds-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
+        }
+
+        .ds-block {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Surbrillance et effet de pulsation pour le DS "upcoming" */
+        .ds-block.upcoming {
+            background-color: #333333; /* Fond gris foncé */
+            transform: scale(1.00); /* Légèrement plus grand */
+            animation: pulse 2.5s infinite; /* Effet de pulsation */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1.00); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1.00); }
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px; /* Taille de la date légèrement plus grande */
+            font-weight: bold;
+        }
+
+        .matiere {
+            font-size: 22px; /* Taille de la matière un peu plus grande */
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff; /* Couleur texte blanche */
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        /* Styles du bouton flottant */
+        .float-button {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000000; /* Fond noir */
+            color: #ffffff; /* Texte blanc */
+            border: 2px solid #ffffff; /* Outline blanche */
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .float-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Planning des DS</h1>
+
+    <div class="ds-container">
+        {% for ds in ds %}
+        <div class="ds-block {% if loop.index0 == prochain_ds_index %}upcoming{% endif %}">
+            <h2>{{ ds['date_affichee'] }}</h2> <!-- Utiliser la date formatée pour l'affichage -->
+            <p class="matiere">{{ ds['matiere'] }}</p>
+            <p>De {{ ds['heure_debut'] }} à {{ ds['heure_fin'] }}, en {{ ds['salle'] }}</p>
+            <p>Notes: {{ ds['notes'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="float-button">Retour à l'accueil</a>
+
+    <script>
+        // Scroll automatique vers le prochain DS
+        window.onload = function() {
+            const upcomingBlock = document.querySelector('.upcoming');
+            if (upcomingBlock) {
+                upcomingBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        };
+    </script>
+</body>
+</html>

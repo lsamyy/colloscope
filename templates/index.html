@@ -111,6 +111,7 @@
                 <option value="G16">Groupe 16</option>
             </select>
             <button id="next-step" disabled>Suivant</button>
+            <a href="/ds" style="color: white; text-decoration: underline; margin-top: 20px; display: block;">Voir planning DS</a>
         </div>
 
         <!-- Étape 2 : Sélection de la semaine -->
@@ -119,11 +120,85 @@
             <form action="/planning" method="post" id="week-form">
                 <input type="hidden" name="group" id="selected-group">
                 <select name="iso_week" id="iso_week">
-                    {% for week, data in weeks.items() %}
-                        <option value="{{ data['iso_week'] }}" class="{% if data['highlight'] %}highlight{% endif %}">
-                            {{ data['start_date'] }} au {{ data['end_date'] }} {% if data['notes'] %} ({{ data['notes'] }}){% endif %}
-                        </option>
-                    {% endfor %}
+        
+                    <!-- Regular Week Option S1 -->
+                    <option value="38">16/09/2024 au 22/09/2024</option>
+        
+                    <!-- Regular Week Option S2 -->
+                    <option value="39">23/09/2024 au 29/09/2024</option>
+        
+                    <!-- Regular Week Option S3 -->
+                    <option value="40">30/09/2024 au 06/10/2024</option>
+        
+                    <!-- Regular Week Option S4 -->
+                    <option value="41">07/10/2024 au 13/10/2024</option>
+        
+                    <!-- Regular Week Option S5 -->
+                    <option value="42">14/10/2024 au 20/10/2024</option>
+        
+                    <!-- Non-Selectable Toussaint Break -->
+                    <option disabled>21/10/2024 au 03/11/2024 (Vacances de la Toussaint)</option>
+        
+                    <!-- Regular Week Option S6 -->
+                    <option value="45">05/11/2024 au 11/11/2024</option>
+        
+                    <!-- Regular Week Option S7 -->
+                    <option value="46">12/11/2024 au 18/11/2024</option>
+        
+                    <!-- Regular Week Option S8 -->
+                    <option value="47">19/11/2024 au 25/11/2024</option>
+        
+                    <!-- Regular Week Option S9 -->
+                    <option value="48">26/11/2024 au 02/12/2024</option>
+        
+                    <!-- Regular Week Option S10 -->
+                    <option value="49">03/12/2024 au 09/12/2024</option>
+        
+                    <!-- Regular Week Option S11 -->
+                    <option value="50">10/12/2024 au 16/12/2024</option>
+        
+                    <!-- Non-Selectable Concours Blanc 1 -->
+                    <option disabled>16/12/2024 au 22/12/2024 (Concours Blanc 1)</option>
+        
+                    <!-- Non-Selectable Noël Break -->
+                    <option disabled>23/12/2024 au 05/01/2025 (Vacances de Noël)</option>
+        
+                    <!-- Regular Week Option S12 -->
+                    <option value="2">06/01/2025 au 12/01/2025</option>
+        
+                    <!-- Regular Week Option S13 -->
+                    <option value="3">13/01/2025 au 19/01/2025</option>
+        
+                    <!-- Regular Week Option S14 -->
+                    <option value="4">20/01/2025 au 26/01/2025</option>
+        
+                    <!-- Regular Week Option S15 -->
+                    <option value="5">27/01/2025 au 02/02/2025</option>
+        
+                    <!-- Regular Week Option S16 -->
+                    <option value="6">03/02/2025 au 09/02/2025</option>
+        
+                    <!-- Regular Week Option S17 -->
+                    <option value="7">10/02/2025 au 16/02/2025</option>
+        
+                    <!-- Non-Selectable Hiver Break -->
+                    <option disabled>17/02/2025 au 02/03/2025 (Vacances d'Hiver)</option>
+        
+                    <!-- Non-Selectable Concours Blanc 2 -->
+                    <option disabled>03/03/2025 au 09/03/2025 (Concours Blanc 2)</option>
+        
+                    <!-- Regular Week Option S18 -->
+                    <option value="11">10/03/2025 au 16/03/2025</option>
+        
+                    <!-- Regular Week Option S19 -->
+                    <option value="12">17/03/2025 au 23/03/2025</option>
+        
+                    <!-- Regular Week Option S20 -->
+                    <option value="13">24/03/2025 au 30/03/2025</option>
+        
+                    <!-- Non-Selectable Printemps Break -->
+                    <option disabled>14/04/2025 au 27/04/2025 (Vacances de Printemps)</option>
+        
                 </select>
                 <button type="submit">Afficher le planning</button>
             </form>
