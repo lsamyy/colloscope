@@ -2,13 +2,10 @@ from flask import Flask, render_template, request
 import json
 import os
 from datetime import datetime, timedelta
-import locale
 from babel.dates import format_date
 
 app = Flask(__name__)
 
-# Définir la locale en français pour le formatage des dates
-locale.setlocale(locale.LC_TIME, 'fr_FR.UTF-8')
 
 # Utiliser des chemins relatifs pour accéder aux fichiers JSON
 base_path = os.path.dirname(os.path.abspath(__file__))
@@ -41,11 +38,11 @@ jours_ordre = {
     "Dimanche": 7
 }
 
-# Fonction pour formater une date en français de manière lisible
+# Function to format dates in French using babel
 def formater_date_humaine(date_str):
-    # Parse la date dans le format DD/MM/YYYY
+    # Parse the date in DD/MM/YYYY format
     date_obj = datetime.strptime(date_str, "%d/%m/%Y")
-    # Utiliser Babel pour reformater la date en français
+    # Use babel to format the date in French
     formatted_date = format_date(date_obj, format='full', locale='fr_FR')
     return formatted_date.capitalize()
 
