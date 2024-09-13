@@ -213,9 +213,20 @@
         const selectedGroupInput = document.getElementById('selected-group');
         const form = document.getElementById('week-form');
 
+        // Charger la sélection de groupe depuis le localStorage
+        window.onload = function() {
+            const savedGroup = localStorage.getItem('selectedGroup');
+            if (savedGroup) {
+                groupSelect.value = savedGroup;
+                nextStepButton.disabled = false; // Activer le bouton si un groupe est déjà sélectionné
+            }
+        };
+
         groupSelect.addEventListener('change', function() {
             if (groupSelect.value) {
                 nextStepButton.disabled = false;
+                // Sauvegarder la sélection de groupe dans le localStorage
+                localStorage.setItem('selectedGroup', groupSelect.value);
             }
         });
 
