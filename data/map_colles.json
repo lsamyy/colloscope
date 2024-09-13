@@ -133,13 +133,13 @@
     },
     "h1": {
         "jour": "Mercredi",
-        "heure": "14:30",
+        "heure": "13:30",
         "professeur": "Balaresque",
         "matiere": "HGG"
     },
     "h2": {
         "jour": "Mercredi",
-        "heure": "18:30",
+        "heure": "14:30",
         "professeur": "Balaresque",
         "matiere": "HGG"
     },
