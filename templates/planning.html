@@ -10,61 +10,192 @@
             background-color: #000000;
             color: #ffffff;
             font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 28px;
             text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
         }
 
-        body.show {
-            opacity: 1;
+        .week-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px 0;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .week-block {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        li {
+        /* Highlight and pulsate effect for upcoming colle */
+        .week-block.upcoming {
+            background-color: #333333;
+            transform: scale(1.00);
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1.00); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1.00); }
+        }
+
+        /* Week date styling - subtle and smaller */
+        .week-dates {
+            font-size: 14px;
+            color: #aaaaaa;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Colle information - more prominent */
+        .colle-info {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        /* Divider between colles for readability */
+        .colle-divider {
+            border-bottom: 1px solid #444444;
             margin: 10px 0;
         }
 
-        a {
-            color: #ffffff;
-            text-decoration: underline;
+        /* Closest upcoming colle within the upcoming week */
+        .closest-upcoming {
+            background-color: #333333; /* Soft gray background */
+            padding: 10px;
+            border-radius: 10px;
+            border: 3px solid #ffffff; /* Subtle white border */
+            box-shadow: 0 0 30px rgba(255, 12, 12, 0.8); /* Soft white glow */
         }
 
-        a:hover {
-            color: #aaaaaa;
+        /* Divider block for events (like holidays or exams) */
+        .event-divider {
+            background-color: #111111;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;  /* Adjust padding */
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 40px 0;  /* Adjust margin to even out spacing */
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        /* Floating back button */
+        .float-button {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .float-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Remove hover yellow color */
+        .colle-info:hover {
+            color: #ffffff; /* Keep the same color on hover */
+            transition: none;
         }
     </style>
 </head>
 <body>
-    <h1>Planning pour {{ group }}</h1>
-
-    <h2>Semaine du {{ week['start_date'] }} au {{ week['end_date'] }}</h2>
-
-    {% if schedule %}
-        <ul>
-        {% for creneau in schedule %}
-            <li>{{ creneau['matiere'] }} avec {{ creneau['professeur'] }} le {{ creneau['jour'] }} à {{ creneau['heure'] }}</li>
+    <h1>Planning des colles pour {{ group }}</h1>
+    <div class="week-container">
+        {% for week in schedule %}
+        
+        <!-- Check if this is an event divider -->
+        {% if week.is_event_divider %}
+            <div class="event-divider">
+                <h2>{{ week.event_title }}</h2>
+            </div>
+        {% else %}
+            <!-- Highlight the upcoming week block based on the backend flag -->
+            <div class="week-block {% if week.is_upcoming_week %}upcoming{% endif %}">
+                
+                <!-- Week date is now smaller and less prominent -->
+                <h2 class="week-dates" data-start="{{ weeks[week.week_key]['start_date'] }}" data-end="{{ weeks[week.week_key]['end_date'] }}">
+                    Semaine du {{ weeks[week.week_key]['start_date'] }} au {{ weeks[week.week_key]['end_date'] }}
+                </h2>
+                
+                {% for colle in week.week_colles %}
+                
+                <!-- Highlight the closest upcoming colle based on the backend flag -->
+                <p class="colle-info {% if colle.is_upcoming_colle %}closest-upcoming{% endif %}">
+                    {{ colle.data.matiere }} avec {{ colle.data.professeur }} le {{ colle.data.jour }} à {{ colle.data.heure }}{% if colle.data.salle %} en salle {{ colle.data.salle }}{% endif %}
+                </p>
+                
+                {% if not loop.last %}
+                    <div class="colle-divider"></div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
         {% endfor %}
-        </ul>
-    {% else %}
-        <p>Aucun créneau trouvé pour cette semaine.</p>
-    {% endif %}
-
-    <a href="/">Retour à l'accueil</a>
+    </div>
+    
+    <a href="/" class="float-button">Retour</a>
 
     <script>
-        // When the page loads, we add the 'show' class to trigger the fade-in effect
+        // Function to convert date to "DD Month" format in French
+        function formatDateHuman(dateStr) {
+            const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+            const date = new Date(dateStr);
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            return `${day} ${month}`;
+        }
+
+        // Apply human-readable date formatting
         window.onload = function() {
-            document.body.classList.add('show');
+            const weekDatesElements = document.querySelectorAll('.week-dates');
+            
+            weekDatesElements.forEach(function(el) {
+                const startDate = el.getAttribute('data-start');
+                const endDate = el.getAttribute('data-end');
+
+                // Format the start and end dates
+                const formattedStart = formatDateHuman(startDate);
+                const formattedEnd = formatDateHuman(endDate);
+
+                // Update the content to be more human-readable
+                el.textContent = `Semaine du ${formattedStart} au ${formattedEnd}`;
+            });
+
+            // Scroll automatically to the upcoming colle block
+            const upcomingBlock = document.querySelector('.upcoming');
+            if (upcomingBlock) {
+                upcomingBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         };
     </script>
 </body>

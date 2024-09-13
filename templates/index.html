@@ -20,7 +20,7 @@
         }
 
         h1 {
-            margin-bottom: 40px; /* Espace sous le titre */
+            margin-bottom: 40px;
         }
 
         h2 {
@@ -31,17 +31,6 @@
             text-align: center;
             width: 100%;
             max-width: 400px;
-        }
-
-        .section {
-            opacity: 0;
-            display: none; /* Par défaut, la section est masquée */
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .section.show {
-            display: block; /* Lorsque visible, on l'affiche */
-            opacity: 1;
         }
 
         select, button {
@@ -57,9 +46,9 @@
             transition: all 0.3s ease;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             display: block;
-            width: 100%; /* Largeur pleine pour les éléments */
+            width: 100%;
             max-width: 300px;
-            margin: 0 auto; /* Centrer */
+            margin: 0 auto;
         }
 
         select:focus, button:focus {
@@ -70,17 +59,28 @@
         button {
             background-color: #333333;
             color: #ffffff;
-            margin-top: 20px; /* Espacement au-dessus du bouton */
+            margin-top: 20px;
         }
 
         button:hover {
             background-color: #555555;
         }
 
-        .highlight {
-            background-color: #4CAF50;
+        .feedback-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333333;
             color: #ffffff;
-            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+        }
+
+        .feedback-button:hover {
+            background-color: #555555;
         }
     </style>
 </head>
@@ -91,164 +91,56 @@
         <!-- Étape 1 : Sélection du groupe -->
         <div id="group-section" class="section show">
             <h2>Quel est votre groupe ?</h2>
-            <select id="group">
-                <option value="" disabled selected>Choisissez un groupe</option>
-                <option value="G1">Groupe 1</option>
-                <option value="G2">Groupe 2</option>
-                <option value="G3">Groupe 3</option>
-                <option value="G4">Groupe 4</option>
-                <option value="G5">Groupe 5</option>
-                <option value="G6">Groupe 6</option>
-                <option value="G7">Groupe 7</option>
-                <option value="G8">Groupe 8</option>
-                <option value="G9">Groupe 9</option>
-                <option value="G10">Groupe 10</option>
-                <option value="G11">Groupe 11</option>
-                <option value="G12">Groupe 12</option>
-                <option value="G13">Groupe 13</option>
-                <option value="G14">Groupe 14</option>
-                <option value="G15">Groupe 15</option>
-                <option value="G16">Groupe 16</option>
-            </select>
-            <button id="next-step" disabled>Suivant</button>
-            <a href="/ds" style="color: white; text-decoration: underline; margin-top: 20px; display: block;">Voir planning DS</a>
-        </div>
-
-        <!-- Étape 2 : Sélection de la semaine -->
-        <div id="week-section" class="section">
-            <h2>Sélectionnez une semaine.</h2>
-            <form action="/planning" method="post" id="week-form">
-                <input type="hidden" name="group" id="selected-group">
-                <select name="iso_week" id="iso_week">
-        
-                    <!-- Regular Week Option S1 -->
-                    <option value="38">16/09/2024 au 22/09/2024</option>
-        
-                    <!-- Regular Week Option S2 -->
-                    <option value="39">23/09/2024 au 29/09/2024</option>
-        
-                    <!-- Regular Week Option S3 -->
-                    <option value="40">30/09/2024 au 06/10/2024</option>
-        
-                    <!-- Regular Week Option S4 -->
-                    <option value="41">07/10/2024 au 13/10/2024</option>
-        
-                    <!-- Regular Week Option S5 -->
-                    <option value="42">14/10/2024 au 20/10/2024</option>
-        
-                    <!-- Non-Selectable Toussaint Break -->
-                    <option disabled>21/10/2024 au 03/11/2024 (Vacances de la Toussaint)</option>
-        
-                    <!-- Regular Week Option S6 -->
-                    <option value="45">05/11/2024 au 11/11/2024</option>
-        
-                    <!-- Regular Week Option S7 -->
-                    <option value="46">12/11/2024 au 18/11/2024</option>
-        
-                    <!-- Regular Week Option S8 -->
-                    <option value="47">19/11/2024 au 25/11/2024</option>
-        
-                    <!-- Regular Week Option S9 -->
-                    <option value="48">26/11/2024 au 02/12/2024</option>
-        
-                    <!-- Regular Week Option S10 -->
-                    <option value="49">03/12/2024 au 09/12/2024</option>
-        
-                    <!-- Regular Week Option S11 -->
-                    <option value="50">10/12/2024 au 16/12/2024</option>
-        
-                    <!-- Non-Selectable Concours Blanc 1 -->
-                    <option disabled>16/12/2024 au 22/12/2024 (Concours Blanc 1)</option>
-        
-                    <!-- Non-Selectable Noël Break -->
-                    <option disabled>23/12/2024 au 05/01/2025 (Vacances de Noël)</option>
-        
-                    <!-- Regular Week Option S12 -->
-                    <option value="2">06/01/2025 au 12/01/2025</option>
-        
-                    <!-- Regular Week Option S13 -->
-                    <option value="3">13/01/2025 au 19/01/2025</option>
-        
-                    <!-- Regular Week Option S14 -->
-                    <option value="4">20/01/2025 au 26/01/2025</option>
-        
-                    <!-- Regular Week Option S15 -->
-                    <option value="5">27/01/2025 au 02/02/2025</option>
-        
-                    <!-- Regular Week Option S16 -->
-                    <option value="6">03/02/2025 au 09/02/2025</option>
-        
-                    <!-- Regular Week Option S17 -->
-                    <option value="7">10/02/2025 au 16/02/2025</option>
-        
-                    <!-- Non-Selectable Hiver Break -->
-                    <option disabled>17/02/2025 au 02/03/2025 (Vacances d'Hiver)</option>
-        
-                    <!-- Non-Selectable Concours Blanc 2 -->
-                    <option disabled>03/03/2025 au 09/03/2025 (Concours Blanc 2)</option>
-        
-                    <!-- Regular Week Option S18 -->
-                    <option value="11">10/03/2025 au 16/03/2025</option>
-        
-                    <!-- Regular Week Option S19 -->
-                    <option value="12">17/03/2025 au 23/03/2025</option>
-        
-                    <!-- Regular Week Option S20 -->
-                    <option value="13">24/03/2025 au 30/03/2025</option>
-        
-                    <!-- Non-Selectable Printemps Break -->
-                    <option disabled>14/04/2025 au 27/04/2025 (Vacances de Printemps)</option>
-        
+            <form action="/planning" method="post" id="group-form">
+                <select name="group" id="group" required>
+                    <option value="" disabled selected>Choisissez un groupe</option>
+                    <option value="G1">Groupe 1</option>
+                    <option value="G2">Groupe 2</option>
+                    <option value="G3">Groupe 3</option>
+                    <option value="G4">Groupe 4</option>
+                    <option value="G5">Groupe 5</option>
+                    <option value="G6">Groupe 6</option>
+                    <option value="G7">Groupe 7</option>
+                    <option value="G8">Groupe 8</option>
+                    <option value="G9">Groupe 9</option>
+                    <option value="G10">Groupe 10</option>
+                    <option value="G11">Groupe 11</option>
+                    <option value="G12">Groupe 12</option>
+                    <option value="G13">Groupe 13</option>
+                    <option value="G14">Groupe 14</option>
+                    <option value="G15">Groupe 15</option>
+                    <option value="G16">Groupe 16</option>
                 </select>
-                <button type="submit">Afficher le planning</button>
+                <button type="submit">Suivant</button>
             </form>
+
+            <a href="/ds" style="color: white; text-decoration: underline; margin-top: 20px; display: block;">Voir planning DS</a>
+            <a href="/contact" class="feedback-button">Suggérer une modification</a>
         </div>
     </div>
 
     <script>
         const groupSelect = document.getElementById('group');
-        const nextStepButton = document.getElementById('next-step');
-        const groupSection = document.getElementById('group-section');
-        const weekSection = document.getElementById('week-section');
-        const selectedGroupInput = document.getElementById('selected-group');
-        const form = document.getElementById('week-form');
+        const form = document.getElementById('group-form');
 
-        // Charger la sélection de groupe depuis le localStorage
+        // Load selected group from localStorage
         window.onload = function() {
             const savedGroup = localStorage.getItem('selectedGroup');
             if (savedGroup) {
                 groupSelect.value = savedGroup;
-                nextStepButton.disabled = false; // Activer le bouton si un groupe est déjà sélectionné
             }
         };
 
+        // Save the selected group in localStorage
         groupSelect.addEventListener('change', function() {
             if (groupSelect.value) {
-                nextStepButton.disabled = false;
-                // Sauvegarder la sélection de groupe dans le localStorage
                 localStorage.setItem('selectedGroup', groupSelect.value);
             }
         });
 
-        nextStepButton.addEventListener('click', function() {
-            // Masquer la sélection de groupe et montrer celle des semaines
-            groupSection.classList.remove('show');
-            groupSection.style.display = 'none'; // Masquer le premier sélecteur proprement
-            weekSection.style.display = 'block'; // Affiche le deuxième sélecteur
-            weekSection.classList.add('show'); // Applique le fade-in
-
-            selectedGroupInput.value = groupSelect.value;
-        });
-
-        // Fade-out de la page avant de soumettre le formulaire
+        // Fade-out of the page before submitting the form
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Empêche la soumission immédiate
-
-            document.body.style.opacity = '0'; // Applique le fade-out à la page
-
-            setTimeout(() => {
-                form.submit(); // Soumet le formulaire après le fade-out
-            }, 500); // Attente de 500ms pour l'animation
+            document.body.style.opacity = '0'; // Apply fade-out
         });
     </script>
 </body>
