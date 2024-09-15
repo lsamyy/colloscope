@@ -38,133 +38,139 @@
     "m7": {
         "jour": "Lundi",
         "heure": "15:30",
-        "professeur": "Lu",
+        "professeur": "S. Lu",
         "matiere": "Mathématiques"
     },
     "m8": {
         "jour": "Lundi",
         "heure": "16:30",
-        "professeur": "Lu",
+        "professeur": "S. Lu",
         "matiere": "Mathématiques"
     },
     "p1": {
         "jour": "Vendredi",
         "heure": "16:30",
-        "professeur": "AR",
+        "professeur": "A. Roullé",
         "matiere": "Philosophie"
     },
     "p2": {
         "jour": "Jeudi",
         "heure": "16:30",
-        "professeur": "Artuys",
+        "professeur": "J. Arthuys",
         "matiere": "Tryptique"
     },
     "p3": {
         "jour": "Vendredi",
         "heure": "17:30",
-        "professeur": "AR",
+        "professeur": "A. Roullé",
         "matiere": "Philosophie"
     },
     "p4": {
         "jour": "Jeudi",
         "heure": "17:30",
-        "professeur": "Artuys",
+        "professeur": "J. Arthuys",
         "matiere": "Tryptique"
     },
     "d1": {
         "jour": "Jeudi",
         "heure": "16:30",
-        "professeur": "Groninger",
+        "professeur": "F. Groninger",
         "matiere": "Allemand"
     },
     "d2": {
         "jour": "Jeudi",
         "heure": "18:30",
-        "professeur": "Groninger",
+        "professeur": "F. Groninger",
         "matiere": "Allemand"
     },
     "f1": {
         "jour": "Mercredi",
         "heure": "18:30",
-        "professeur": "DZ",
+        "professeur": "D. Zemmour",
         "matiere": "Lettres"
     },
     "f2": {
         "jour": "Jeudi",
         "heure": "17:30",
-        "professeur": "CC",
+        "professeur": "C. C.",
         "matiere": "Lettres"
     },
     "f3": {
         "jour": "Jeudi",
         "heure": "16:30",
-        "professeur": "DZ",
+        "professeur": "D. Zemmour",
         "matiere": "Lettres"
     },
     "f4": {
         "jour": "Jeudi",
         "heure": "18:30",
-        "professeur": "CC",
+        "professeur": "C. C.",
         "matiere": "Lettres"
     },
     "sh1": {
         "jour": "Mardi",
         "heure": "18:30",
-        "professeur": "XE",
+        "professeur": "X. Enselme",
         "matiere": "ESH"
     },
     "sh2": {
         "jour": "Vendredi",
         "heure": "15:30",
-        "professeur": "XE",
+        "professeur": "X. Enselme",
         "matiere": "ESH"
     },
     "sh3": {
         "jour": "Vendredi",
         "heure": "16:30",
-        "professeur": "XE",
+        "professeur": "X. Enselme",
         "matiere": "ESH"
     },
     "sh4": {
         "jour": "Jeudi",
         "heure": "17:30",
-        "professeur": "AW",
+        "professeur": "A. W.",
         "matiere": "ESH"
     },
     "h1": {
         "jour": "Mercredi",
         "heure": "13:30",
-        "professeur": "Balaresque",
+        "professeur": "BalA. Roulléesque",
         "matiere": "HGG"
     },
     "h2": {
         "jour": "Mercredi",
         "heure": "14:30",
-        "professeur": "Balaresque",
+        "professeur": "BalA. Roulléesque",
         "matiere": "HGG"
     },
     "h3": {
         "jour": "Mardi",
         "heure": "18:30",
-        "professeur": "A.R",
+        "professeur": "A. Roussel",
         "matiere": "HGG"
     },
     "h4": {
         "jour": "Vendredi",
         "heure": "18:30",
-        "professeur": "A.R",
+        "professeur": "A. Roussel",
+        "matiere": "HGG"
+    },
+    "h5": {
+        "jour": "Mercredi",
+        "heure": "18:30",
+        "professeur": "BalA. Roulléesque",
         "matiere": "HGG"
     },
     "e1": {
         "jour": "Vendredi",
         "heure": "15:30",
-        "professeur": "SG",
+        "professeur": "S. Gonzalez",
         "matiere": "Espagnol"
     },
     "e2": {
         "jour": "Vendredi",
         "heure": "16:30",
-        "professeur": "SG",
+        "professeur": "S. Gonzalez",
         "matiere": "Espagnol"
     },
     "Ru-Ch": {
@@ -176,25 +182,25 @@
     "a1": {
         "jour": "Lundi",
         "heure": "15:30",
-        "professeur": "V.Guerin",
+        "professeur": "V. Guerin",
         "matiere": "Anglais"
     },
     "a2": {
         "jour": "Lundi",
         "heure": "16:30",
-        "professeur": "V.Guerin",
+        "professeur": "V. Guerin",
         "matiere": "Anglais"
     },
     "a3": {
         "jour": "Lundi",
         "heure": "17:30",
-        "professeur": "V.Guerin",
+        "professeur": "V. Guerin",
         "matiere": "Anglais"
     },
     "a4": {
         "jour": "Lundi",
         "heure": "18:30",
-        "professeur": "V.Guerin",
+        "professeur": "V. Guerin",
         "matiere": "Anglais"
     },
     "Itali": {
