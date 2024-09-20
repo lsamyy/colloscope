@@ -3,175 +3,200 @@
         "jour": "Jeudi",
         "heure": "16:30",
         "professeur": "Aubert",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "G006"
     },
     "m2": {
         "jour": "Lundi",
         "heure": "15:30",
         "professeur": "Maillot",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "A205"
     },
     "m3": {
         "jour": "Lundi",
         "heure": "15:30",
         "professeur": "Brunault",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "M301"
     },
     "m4": {
         "jour": "Jeudi",
         "heure": "17:30",
         "professeur": "Aubert",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "G006"
     },
     "m5": {
         "jour": "Lundi",
         "heure": "16:30",
         "professeur": "Maillot",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "A205"
     },
     "m6": {
         "jour": "Lundi",
         "heure": "16:30",
         "professeur": "Brunault",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "M301"
     },
     "m7": {
         "jour": "Lundi",
         "heure": "15:30",
         "professeur": "S. Lu",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "A209"
     },
     "m8": {
         "jour": "Lundi",
         "heure": "16:30",
         "professeur": "S. Lu",
-        "matiere": "Mathématiques"
+        "matiere": "Mathématiques",
+	"salle": "A209"
     },
     "p1": {
         "jour": "Vendredi",
         "heure": "16:30",
-        "professeur": "A. Roullé",
-        "matiere": "Philosophie"
+        "professeur": "A. Roullé (1e: mail ; 2e: -30min)",
+        "matiere": "Philosophie",
+	"salle": "A207"
     },
     "p2": {
         "jour": "Jeudi",
         "heure": "16:30",
         "professeur": "J. Arthuys",
-        "matiere": "Tryptique"
+        "matiere": "Tryptique",
+	"salle": "A213"
     },
     "p3": {
         "jour": "Vendredi",
         "heure": "17:30",
-        "professeur": "A. Roullé",
-        "matiere": "Philosophie"
+        "professeur": "A. Roullé (1e: mail ; 2e: -30min)",
+        "matiere": "Philosophie",
+	"salle": "A207"
     },
     "p4": {
         "jour": "Jeudi",
         "heure": "17:30",
         "professeur": "J. Arthuys",
-        "matiere": "Tryptique"
+        "matiere": "Tryptique",
+	"salle": "A213"
     },
     "d1": {
         "jour": "Jeudi",
         "heure": "16:30",
         "professeur": "F. Groninger",
-        "matiere": "Allemand"
+        "matiere": "Allemand",
+	"salle": "F001"
     },
     "d2": {
         "jour": "Jeudi",
         "heure": "18:30",
         "professeur": "F. Groninger",
-        "matiere": "Allemand"
+        "matiere": "Allemand",
+	"salle": "F001"
     },
     "f1": {
         "jour": "Mercredi",
         "heure": "18:30",
         "professeur": "D. Zemmour",
-        "matiere": "Lettres"
+        "matiere": "Lettres",
+	"salle": "E101"
     },
     "f2": {
         "jour": "Jeudi",
         "heure": "17:30",
-        "professeur": "C. C.",
-        "matiere": "Lettres"
+        "professeur": "C. Chouen",
+        "matiere": "Lettres",
+	"salle": "F003"
     },
     "f3": {
         "jour": "Jeudi",
         "heure": "16:30",
         "professeur": "D. Zemmour",
-        "matiere": "Lettres"
+        "matiere": "Lettres",
+	"salle": "E102"
     },
     "f4": {
         "jour": "Jeudi",
         "heure": "18:30",
-        "professeur": "C. C.",
-        "matiere": "Lettres"
+        "professeur": "C. Chouen",
+        "matiere": "Lettres",
+	"salle": "F003"
     },
     "sh1": {
         "jour": "Mardi",
         "heure": "18:30",
-        "professeur": "X. Enselme",
+        "professeur": "X. Enselme (1er -30min)",
         "matiere": "ESH"
     },
     "sh2": {
         "jour": "Vendredi",
         "heure": "15:30",
-        "professeur": "X. Enselme",
+        "professeur": "X. Enselme (1er -30min)",
         "matiere": "ESH"
     },
     "sh3": {
         "jour": "Vendredi",
         "heure": "16:30",
-        "professeur": "X. Enselme",
+        "professeur": "X. Enselme (1er -30min)",
         "matiere": "ESH"
     },
     "sh4": {
         "jour": "Jeudi",
         "heure": "17:30",
-        "professeur": "A. W.",
+        "professeur": "A. W. (1er -30min)",
         "matiere": "ESH"
     },
     "h1": {
         "jour": "Mercredi",
         "heure": "13:30",
         "professeur": "Balaresque",
-        "matiere": "HGG"
+        "matiere": "HGG",
+	"salle": "A208"
     },
     "h2": {
         "jour": "Mercredi",
         "heure": "14:30",
         "professeur": "Balaresque",
-        "matiere": "HGG"
+        "matiere": "HGG",
+	"salle": "A208"
     },
     "h3": {
         "jour": "Mardi",
         "heure": "18:30",
         "professeur": "A. Roussel",
-        "matiere": "HGG"
+        "matiere": "HGG",
+	"salle": "A212"
     },
     "h4": {
         "jour": "Vendredi",
         "heure": "18:30",
         "professeur": "A. Roussel",
-        "matiere": "HGG"
+        "matiere": "HGG",
+	"salle": "A204"
     },
     "h5": {
         "jour": "Mercredi",
         "heure": "18:30",
         "professeur": "Balaresque",
-        "matiere": "HGG"
+        "matiere": "HGG",
+	"salle": "A208"
     },
     "e1": {
         "jour": "Vendredi",
         "heure": "15:30",
         "professeur": "S. Gonzalez",
-        "matiere": "Espagnol"
+        "matiere": "Espagnol",
+	"salle": "G006"
     },
     "e2": {
         "jour": "Vendredi",
         "heure": "16:30",
         "professeur": "S. Gonzalez",
-        "matiere": "Espagnol"
+        "matiere": "Espagnol",
+	"salle": "G006"
     },
     "Ru-Ch": {
         "jour": "Dimanche",
@@ -183,25 +208,29 @@
         "jour": "Lundi",
         "heure": "15:30",
         "professeur": "V. Guerin",
-        "matiere": "Anglais"
+        "matiere": "Anglais",
+	"salle": "H103 (prép en H102)"
     },
     "a2": {
         "jour": "Lundi",
         "heure": "16:30",
         "professeur": "V. Guerin",
-        "matiere": "Anglais"
+        "matiere": "Anglais",
+	"salle": "H103 (prép en H102)"
     },
     "a3": {
         "jour": "Lundi",
         "heure": "17:30",
         "professeur": "V. Guerin",
-        "matiere": "Anglais"
+        "matiere": "Anglais",
+	"salle": "H103 (prép en H102)"
     },
     "a4": {
         "jour": "Lundi",
         "heure": "18:30",
         "professeur": "V. Guerin",
-        "matiere": "Anglais"
+        "matiere": "Anglais",
+	"salle": "H103 (prép en H102)"
     },
     "Itali": {
         "jour": "Dimanche",

@@ -222,7 +222,6 @@ def planning():
     detailed_schedule_with_flags = []
 
     for entry in detailed_schedule_by_week:
-
         # Unpack the regular week data (4-tuple now)
         week_key, week_colles, event, is_upcoming_week = entry
         week_colles_with_flags = []
@@ -243,6 +242,19 @@ def planning():
                     'is_upcoming_colle': False
                 })
 
+        # Ensure there are two colles (or insert a placeholder)
+        if len(week_colles_with_flags) < 2:
+            week_colles_with_flags.append({
+                'data': {
+                    'matiere': 'Inconnu',
+                    'professeur': 'inconnu',
+                    'jour': 'Dimanche',
+                    'heure': '00:00',
+                    'salle': 'inconnue'
+                },
+                'is_upcoming_colle': False
+            })
+
         detailed_schedule_with_flags.append({
             'week_key': week_key,
             'week_colles': week_colles_with_flags,
@@ -258,6 +270,7 @@ def planning():
         weeks=filtered_weeks,
         prochain_creneau_index=prochain_creneau_index
     )
+
 
 
 

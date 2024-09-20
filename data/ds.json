@@ -18,10 +18,10 @@
     "DS3": {
         "date": "21/09/2024",
         "matiere": "Lettres - Synthèse",
-        "heure_debut": "08:00",
-        "heure_fin": "12:00",
-        "salle": "salle inconnue",
-        "notes": "Horaire à déterminer"
+        "heure_debut": "08:30",
+        "heure_fin": "12:30",
+        "salle": "Génovéfain",
+        "notes": "-"
     },
     "DS4": {
         "date": "28/09/2024",
