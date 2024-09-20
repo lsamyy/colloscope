@@ -136,10 +136,16 @@ from datetime import datetime, timedelta
 
 # Determine the current week and whether it is after Friday 21:00
 def is_past_friday_night():
+    # Get the current time
     now = datetime.now()
-    if now.weekday() == 4 and now.hour >= 21:  # Friday and after 21:00
+
+    # Add 8 hours to convert Oregon time to Paris time (during daylight saving)
+    paris_time = now + timedelta(hours=8)
+
+    # Check if it's Friday after 21:00 Paris time
+    if paris_time.weekday() == 4 and paris_time.hour >= 21:
         return True
-    elif now.weekday() > 4:  # Saturday and Sunday
+    elif paris_time.weekday() > 4:  # If it's already Saturday or Sunday in Paris
         return True
     else:
         return False
