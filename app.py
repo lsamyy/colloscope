@@ -298,5 +298,20 @@ def afficher_planning_ds():
 def contact():
     return render_template('contact.html')
 
+@app.route('/updates')
+def updates():
+    with open(os.path.join(base_path, 'data', 'updates.json'), encoding='utf-8') as f:
+        updates_data = json.load(f)['updates']  # Ensure we're accessing the "updates" key
+    
+    # Sort updates by date (newest first) and format date to DD-MM-YYYY
+    sorted_updates = sorted(updates_data, key=lambda x: x['date'], reverse=True)
+    
+    for update in sorted_updates:
+        # Convert date format from YYYY-MM-DD to DD-MM-YYYY
+        update['date'] = datetime.strptime(update['date'], "%Y-%m-%d").strftime("%d-%m-%Y")
+    
+    return render_template('updates.html', updates=sorted_updates)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

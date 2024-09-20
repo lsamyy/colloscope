@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mises à jour</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {    
+            margin-bottom: 40px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .update-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .update-block {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .update-date {
+            font-size: 14px;
+            color: #aaaaaa;
+            margin-bottom: 10px;
+        }
+
+        .update-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .update-description {
+            font-size: 16px;
+            color: #dddddd;
+        }
+
+        /* Divider between updates */
+        .update-divider {
+            border-bottom: 1px solid #444444;
+            margin: 20px 0;
+        }
+
+        /* Floating back button */
+        .float-button {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .float-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mises à jour du site</h1>
+    <div class="update-container">
+        {% for update in updates %}
+        <div class="update-block">
+            <p class="update-date">Mise à jour du {{ update.date }}</p>
+            <h2 class="update-title">{{ update.title }}</h2>
+            <p class="update-description">{{ update.description }}</p>
+        </div>
+        {% if not loop.last %}
+            <div class="update-divider"></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <a href="/" class="float-button">Retour</a>
+</body>
+</html>

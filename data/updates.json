@@ -1,0 +1,34 @@
+{
+    "updates": [
+        {
+            "date": "2024-09-20",
+            "title": "Correction du colloscope, page DS, et nouvelle bannière",
+            "description": "Mise à jour des informations du colloscope, des DS, et de la bannière."
+        },
+        {
+            "date": "2024-09-20",
+            "title": "Correction des noms des professeurs",
+            "description": "Mise à jour des noms des enseignants pour corriger des erreurs."
+        },
+        {
+            "date": "2024-09-20",
+            "title": "Correction du colloscope",
+            "description": "Correction du planning."
+        },
+        {
+            "date": "2024-09-15",
+            "title": "map_colles et bannière",
+            "description": "Mise à jour de la carte des colles et modifications sur la bannière."
+        },
+        {
+            "date": "2024-09-13",
+            "title": "Correction du colloscope",
+            "description": "Mise à jour des créneaux horaires."
+        },
+        {
+            "date": "2024-09-21",
+            "title": "Correction du colloscope et nouvelle page",
+            "description": "Les nouveaux créneaux de Zemmour ont été ajoutés. Nouvelle page 'mises à jour' ajoutée."
+        }
+    ]
+}

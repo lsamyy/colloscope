@@ -58,7 +58,7 @@
     "p1": {
         "jour": "Vendredi",
         "heure": "16:30",
-        "professeur": "A. Roullé (1e: mail ; 2e: -30min)",
+        "professeur": "A. Roullé",
         "matiere": "Philosophie",
 	"salle": "A207"
     },
@@ -72,7 +72,7 @@
     "p3": {
         "jour": "Vendredi",
         "heure": "17:30",
-        "professeur": "A. Roullé (1e: mail ; 2e: -30min)",
+        "professeur": "A. Roullé",
         "matiere": "Philosophie",
 	"salle": "A207"
     },
@@ -102,7 +102,7 @@
         "heure": "18:30",
         "professeur": "D. Zemmour",
         "matiere": "Lettres",
-	"salle": "E101"
+	"salle": "H005"
     },
     "f2": {
         "jour": "Jeudi",
