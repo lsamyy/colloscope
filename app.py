@@ -113,8 +113,6 @@ def get_event_for_week(current_week_start, next_week_start):
     current_week_start = parse_date_flexible(current_week_start)
     next_week_start = parse_date_flexible(next_week_start)
 
-    print(f"Checking events between {current_week_start.date()} and {next_week_start.date()}")
-
     event_titles = []  # Store all events in case there are consecutive ones
 
     for event in events:
@@ -123,7 +121,6 @@ def get_event_for_week(current_week_start, next_week_start):
 
         # Place event between current and next week
         if current_week_start < event_start < next_week_start:
-            print(f"Event found: {event['title']} between weeks.")
             event_titles.append(event["title"])
 
     # Return all event titles if found, otherwise None
@@ -225,7 +222,6 @@ def planning():
     detailed_schedule_with_flags = []
 
     for entry in detailed_schedule_by_week:
-        print(f"Processing entry: {entry}")  # Debugging line to print the entry being processed
 
         # Unpack the regular week data (4-tuple now)
         week_key, week_colles, event, is_upcoming_week = entry
