@@ -134,13 +134,13 @@
     "h1": {
         "jour": "Mercredi",
         "heure": "13:30",
-        "professeur": "BalA. Roulléesque",
+        "professeur": "Balaresque",
         "matiere": "HGG"
     },
     "h2": {
         "jour": "Mercredi",
         "heure": "14:30",
-        "professeur": "BalA. Roulléesque",
+        "professeur": "Balaresque",
         "matiere": "HGG"
     },
     "h3": {
@@ -158,7 +158,7 @@
     "h5": {
         "jour": "Mercredi",
         "heure": "18:30",
-        "professeur": "BalA. Roulléesque",
+        "professeur": "Balaresque",
         "matiere": "HGG"
     },
     "e1": {
