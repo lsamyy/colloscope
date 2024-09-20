@@ -17,7 +17,7 @@
             align-items: center;
         }
 
-        h1 {
+        h1 {    
             margin-bottom: 40px;
             font-size: 28px;
             text-align: center;
@@ -29,14 +29,14 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100px;  /* Increase the height */
+            height: 100px;
             background-color: rgba(255, 0, 0, 1);
             color: white;
-            font-size: 28px;  /* Make the font larger */
+            font-size: 28px;
             text-align: center;
             display: flex;
             justify-content: center;
-            align-items: center;  /* Center the text vertically and horizontally */
+            align-items: center;
             z-index: 9999;
         }
 
@@ -55,7 +55,7 @@
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        /* Highlight and pulsate effect for upcoming colle */
+        /* Highlight and pulsate effect for the upcoming week */
         .week-block.upcoming {
             background-color: #333333;
             transform: scale(1.00);
@@ -68,7 +68,7 @@
             100% { transform: scale(1.00); }
         }
 
-        /* Week date styling - subtle and smaller */
+        /* Week date styling */
         .week-dates {
             font-size: 14px;
             color: #aaaaaa;
@@ -76,7 +76,7 @@
             text-transform: uppercase;
         }
 
-        /* Colle information - more prominent */
+        /* Colle information */
         .colle-info {
             font-size: 20px;
             font-weight: 600;
@@ -84,19 +84,10 @@
             color: #ffffff;
         }
 
-        /* Divider between colles for readability */
+        /* Divider between colles */
         .colle-divider {
             border-bottom: 1px solid #444444;
             margin: 10px 0;
-        }
-
-        /* Closest upcoming colle within the upcoming week */
-        .closest-upcoming {
-            background-color: #333333; /* Soft gray background */
-            padding: 10px;
-            border-radius: 10px;
-            border: 3px solid #ffffff; /* Subtle white border */
-            box-shadow: 0 0 30px rgba(255, 12, 12, 0.8); /* Soft white glow */
         }
 
         /* Divider block for events (like holidays or exams) */
@@ -104,12 +95,12 @@
             background-color: #111111;
             color: #ffffff;
             text-align: center;
-            padding: 15px 0;  /* Adjust padding */
+            padding: 15px 0;
             border-radius: 10px;
             border: 2px solid #ffffff;
             font-size: 22px;
             font-weight: 600;
-            margin: 40px 0;  /* Adjust margin to even out spacing */
+            margin: 40px 0;
         }
 
         p {
@@ -136,12 +127,6 @@
         .float-button:hover {
             background-color: #ffffff;
             color: #000000;
-        }
-
-        /* Remove hover yellow color */
-        .colle-info:hover {
-            color: #ffffff; /* Keep the same color on hover */
-            transition: none;
         }
     </style>
 </head>
@@ -171,9 +156,7 @@
                 </h2>
                 
                 {% for colle in week.week_colles %}
-                
-                <!-- Highlight the closest upcoming colle based on the backend flag -->
-                <p class="colle-info {% if colle.is_upcoming_colle %}closest-upcoming{% endif %}">
+                <p class="colle-info">
                     {{ colle.data.matiere }} avec {{ colle.data.professeur }} le {{ colle.data.jour }} à {{ colle.data.heure }}{% if colle.data.salle %} en salle {{ colle.data.salle }}{% endif %}
                 </p>
                 
@@ -198,7 +181,7 @@
             return `${day} ${month}`;
         }
 
-        // Apply human-readable date formatting
+        // Apply human-readable date formatting and handle the automatic scrolling
         window.onload = function() {
             const weekDatesElements = document.querySelectorAll('.week-dates');
             
@@ -214,12 +197,26 @@
                 el.textContent = `Semaine du ${formattedStart} au ${formattedEnd}`;
             });
 
-            // Scroll automatically to the upcoming colle block
-            const upcomingBlock = document.querySelector('.upcoming');
-            if (upcomingBlock) {
+            // Scroll automatically to the upcoming week block after Friday 21:00
+            scrollToUpcomingWeek();
+        };
+
+        // Function to scroll to the upcoming week block
+        function scrollToUpcomingWeek() {
+            const now = new Date();
+            const currentDay = now.getDay();  // 5 = Friday
+            const currentHour = now.getHours();
+            
+            // Check if it's Friday after 21:00 or later
+            const isPastFridayNight = (currentDay === 5 && currentHour >= 21) || currentDay > 5;
+            
+            // Find the upcoming week block
+            const upcomingBlock = document.querySelector('.week-block.upcoming');
+            
+            if (upcomingBlock && isPastFridayNight) {
                 upcomingBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        };
+        }
     </script>
 </body>
 </html>

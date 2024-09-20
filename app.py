@@ -135,21 +135,29 @@ def get_event_for_week(current_week_start, next_week_start):
 
 
 # Exclure les semaines sans colles et celles déjà passées
+from datetime import datetime, timedelta
+
+# Determine the current week and whether it is after Friday 21:00
+def is_past_friday_night():
+    now = datetime.now()
+    if now.weekday() == 4 and now.hour >= 21:  # Friday and after 21:00
+        return True
+    elif now.weekday() > 4:  # Saturday and Sunday
+        return True
+    else:
+        return False
+
 def filter_weeks_with_colles(group):
     filtered_weeks = {}
     detailed_schedule_by_week = []
+    upcoming_week_found = False
+    previous_week_data = None  # Keep track of the previous week's data
 
-    week_keys = list(map_weeks.keys())  # Get list of week keys
-    for i, week_key in enumerate(week_keys):
-        week_data = map_weeks[week_key]
+    for week_key, week_data in map_weeks.items():
         colles_for_week = colloscope.get(group, {}).get(week_key, [])
-        next_week_data = map_weeks[week_keys[i + 1]] if i + 1 < len(week_keys) else None
-
-        print(f"Processing week {week_key} from {week_data['start_date']} to {week_data['end_date']}")
-
         if not colles_for_week:
             continue  # Skip weeks without colles
-        
+
         week_schedule = []
         for colle_id in colles_for_week:
             colle_info = map_colles.get(colle_id)
@@ -163,21 +171,37 @@ def filter_weeks_with_colles(group):
         if week_schedule:
             week_schedule = trier_creneaux_par_jour_et_heure(week_schedule)
 
-            if next_week_data:
-                print(f"Next week is from {next_week_data['start_date']} to {next_week_data['end_date']}")
+            # Get event for the week (if any) using previous week's start date for event placement
+            event = None
+            if previous_week_data:
+                event = get_event_for_week(previous_week_data['start_date'], week_data['start_date'])
 
-            # Get event(s) between current and next week (returns a list of events)
-            events = get_event_for_week(week_data['start_date'], next_week_data['start_date']) if next_week_data else None
+            # Check if this is the upcoming week (before or after Friday 21:00)
+            if not upcoming_week_found:
+                week_start = parse_date_flexible(week_data['start_date'])
+                week_end = parse_date_flexible(week_data['end_date'])
+                now = datetime.now()
+
+                if week_start <= now <= week_end and not is_past_friday_night():
+                    upcoming_week_found = True
+                    is_upcoming_week = True
+                elif week_start > now or (week_start <= now <= week_end and is_past_friday_night()):
+                    upcoming_week_found = True
+                    is_upcoming_week = True
+                else:
+                    is_upcoming_week = False
+            else:
+                is_upcoming_week = False
+
             filtered_weeks[week_key] = week_data  # Store week information
-            detailed_schedule_by_week.append((week_key, week_schedule, events))  # Append both the week_key, schedule, and events
+            detailed_schedule_by_week.append((week_key, week_schedule, event, is_upcoming_week))  # Append week_key, schedule, event, and flag
 
-            # If there are multiple events (CB1 and Christmas), append them as dividers
-            if events:
-                for event in events:
-                    print(f"Event Divider Added: {event}")
-                    detailed_schedule_by_week.append(("event_divider", event))
+        # Update previous_week_data after each iteration
+        previous_week_data = week_data
 
     return filtered_weeks, detailed_schedule_by_week
+
+
 
 
 
@@ -201,44 +225,35 @@ def planning():
     detailed_schedule_with_flags = []
 
     for entry in detailed_schedule_by_week:
-        # Check if it's an event divider (2-tuple) or a regular week (3-tuple)
-        if entry[0] == "event_divider":
-            _, event = entry
-            # Add the event divider to the schedule with None values for colles and event flags
-            detailed_schedule_with_flags.append({
-                'is_event_divider': True,
-                'event_title': event
-            })
-        else:
-            # Unpack the regular week data (3-tuple)
-            week_key, week_colles, event = entry
-            is_upcoming_week = False
-            week_colles_with_flags = []
+        print(f"Processing entry: {entry}")  # Debugging line to print the entry being processed
 
-            for colle_index, colle in enumerate(week_colles):
-                colle_datetime = datetime.strptime(colle['date'] + ' ' + colle['heure'], '%d/%m/%Y %H:%M')
+        # Unpack the regular week data (4-tuple now)
+        week_key, week_colles, event, is_upcoming_week = entry
+        week_colles_with_flags = []
 
-                if colle_datetime > maintenant and prochain_creneau_index == -1:
-                    # This is the first future colle, mark the week and the colle as upcoming
-                    is_upcoming_week = True
-                    prochain_creneau_index = len(detailed_schedule_with_flags)
-                    week_colles_with_flags.append({
-                        'data': colle,
-                        'is_upcoming_colle': True
-                    })
-                else:
-                    week_colles_with_flags.append({
-                        'data': colle,
-                        'is_upcoming_colle': False
-                    })
+        for colle_index, colle in enumerate(week_colles):
+            colle_datetime = datetime.strptime(colle['date'] + ' ' + colle['heure'], '%d/%m/%Y %H:%M')
 
-            detailed_schedule_with_flags.append({
-                'week_key': week_key,
-                'week_colles': week_colles_with_flags,
-                'is_upcoming_week': is_upcoming_week,
-                'event': event,
-                'is_event_divider': False  # It's not an event divider
-            })
+            if colle_datetime > maintenant and prochain_creneau_index == -1:
+                # This is the first future colle, mark the week and the colle as upcoming
+                prochain_creneau_index = len(detailed_schedule_with_flags)
+                week_colles_with_flags.append({
+                    'data': colle,
+                    'is_upcoming_colle': True
+                })
+            else:
+                week_colles_with_flags.append({
+                    'data': colle,
+                    'is_upcoming_colle': False
+                })
+
+        detailed_schedule_with_flags.append({
+            'week_key': week_key,
+            'week_colles': week_colles_with_flags,
+            'is_upcoming_week': is_upcoming_week,
+            'event': event,
+            'is_event_divider': False  # It's not an event divider
+        })
 
     return render_template(
         'planning.html',
@@ -247,6 +262,7 @@ def planning():
         weeks=filtered_weeks,
         prochain_creneau_index=prochain_creneau_index
     )
+
 
 
 @app.route('/ds')
