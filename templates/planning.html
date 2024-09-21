@@ -46,9 +46,6 @@
             border: 2px solid rgb(0, 255, 0);
         }
 
-
-
-
         .week-container {
             width: 100%;
             max-width: 800px;
@@ -162,6 +159,7 @@
                 <!-- Week date is now smaller and less prominent -->
                 <h2 class="week-dates" data-start="{{ weeks[week.week_key]['start_date'] }}" data-end="{{ weeks[week.week_key]['end_date'] }}">
                     Semaine du {{ weeks[week.week_key]['start_date'] }} au {{ weeks[week.week_key]['end_date'] }}
+                    {% if week.is_upcoming_week %} (Prochaine semaine) {% endif %}
                 </h2>
                 
                 {% for colle in week.week_colles %}

@@ -136,73 +136,88 @@ from datetime import datetime, timedelta
 
 # Determine the current week and whether it is after Friday 21:00
 def is_past_friday_night():
-    # Get the current time
+    # Get the current time on the server (Oregon time)
     now = datetime.now()
 
-    # Add 8 hours to convert Oregon time to Paris time (during daylight saving)
+    # Adjust for Paris time (UTC+2 during daylight saving)
     paris_time = now + timedelta(hours=8)
 
-    # Check if it's Friday after 21:00 Paris time
-    if paris_time.weekday() == 4 and paris_time.hour >= 21:
+    # Log current server and Paris time for debugging
+    print(f"Current server time: {now}")
+    print(f"Paris adjusted time: {paris_time}")
+
+    # Check if it's Friday after 21:00 in Paris time or it's the weekend (Saturday or Sunday)
+    if paris_time.weekday() == 4 and paris_time.hour >= 21:  # After 21:00 on Friday
         return True
-    elif paris_time.weekday() > 4:  # If it's already Saturday or Sunday in Paris
+    elif paris_time.weekday() > 4:  # If it's Saturday or Sunday
         return True
     else:
         return False
 
+
 def filter_weeks_with_colles(group):
     filtered_weeks = {}
     detailed_schedule_by_week = []
-    upcoming_week_found = False
-    previous_week_data = None  # Keep track of the previous week's data
+    upcoming_week_found = False  # Flag to ensure only one upcoming week is marked
+    previous_week_data = None
 
+    # Adjust server time to Paris time
+    now = datetime.now() + timedelta(hours=8)  # Adjusted to Paris time
+
+    # Iterate through all weeks in the schedule
     for week_key, week_data in map_weeks.items():
         colles_for_week = colloscope.get(group, {}).get(week_key, [])
         if not colles_for_week:
-            continue  # Skip weeks without colles
+            continue  # Skip weeks with no colles
 
         week_schedule = []
         for colle_id in colles_for_week:
             colle_info = map_colles.get(colle_id)
             if colle_info:
-                colle_info_copy = colle_info.copy()  # Create a copy to avoid mutating the original data
-                colle_info_copy['date'] = formater_date(week_data['start_date'])  # Assign the start date to the colle
-                colle_info_copy['salle'] = colle_info.get('salle', None)  # Add 'salle' if it exists, otherwise default to None
-                week_schedule.append(colle_info_copy)  # Use the copy with added date
+                colle_info_copy = colle_info.copy()
+                colle_info_copy['date'] = formater_date(week_data['start_date'])
+                colle_info_copy['salle'] = colle_info.get('salle', None)
+                week_schedule.append(colle_info_copy)
 
-        # Sort the colles within the week by day and time
+        # Sort colles by day and time
         if week_schedule:
             week_schedule = trier_creneaux_par_jour_et_heure(week_schedule)
 
-            # Get event for the week (if any) using previous week's start date for event placement
+            # Add event if present between weeks
             event = None
             if previous_week_data:
                 event = get_event_for_week(previous_week_data['start_date'], week_data['start_date'])
 
-            # Check if this is the upcoming week (before or after Friday 21:00)
-            if not upcoming_week_found:
-                week_start = parse_date_flexible(week_data['start_date'])
-                week_end = parse_date_flexible(week_data['end_date'])
-                now = datetime.now()
+            # Log the week and current date for better clarity
+            week_start = parse_date_flexible(week_data['start_date'])
+            week_end = parse_date_flexible(week_data['end_date'])
 
+
+            # Fix: Change logic for advancing to the next week after Friday night
+            if not upcoming_week_found:
+                # Case 1: We are currently in this week (before Friday night)
                 if week_start <= now <= week_end and not is_past_friday_night():
-                    upcoming_week_found = True
-                    is_upcoming_week = True
-                elif week_start > now or (week_start <= now <= week_end and is_past_friday_night()):
-                    upcoming_week_found = True
-                    is_upcoming_week = True
-                else:
                     is_upcoming_week = False
+                # Case 2: It's Friday night or later, so move to the next week as upcoming
+                elif week_start > now or (week_start <= now <= week_end and is_past_friday_night()):
+                    if week_start > now:  # This means it's already past the current week
+                        upcoming_week_found = True
+                        is_upcoming_week = True
+                    else:
+                        is_upcoming_week = False
             else:
                 is_upcoming_week = False
 
-            filtered_weeks[week_key] = week_data  # Store week information
-            detailed_schedule_by_week.append((week_key, week_schedule, event, is_upcoming_week))  # Append week_key, schedule, event, and flag
+            filtered_weeks[week_key] = week_data
+            detailed_schedule_by_week.append((week_key, week_schedule, event, is_upcoming_week))
 
-        # Update previous_week_data after each iteration
         previous_week_data = week_data
 
     return filtered_weeks, detailed_schedule_by_week
+
+
+
+
 
 
 
