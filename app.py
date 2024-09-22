@@ -158,11 +158,8 @@ def is_past_friday_night():
 def filter_weeks_with_colles(group):
     filtered_weeks = {}
     detailed_schedule_by_week = []
-    upcoming_week_found = False  # Flag to ensure only one upcoming week is marked
-    previous_week_data = None
-
-    # Adjust server time to Paris time
-    now = datetime.now() + timedelta(hours=8)  # Adjusted to Paris time
+    upcoming_week_found = False
+    previous_week_data = None  # Track the previous week's data
 
     # Iterate through all weeks in the schedule
     for week_key, week_data in map_weeks.items():
@@ -188,25 +185,21 @@ def filter_weeks_with_colles(group):
             if previous_week_data:
                 event = get_event_for_week(previous_week_data['start_date'], week_data['start_date'])
 
-            # Log the week and current date for better clarity
-            week_start = parse_date_flexible(week_data['start_date'])
-            week_end = parse_date_flexible(week_data['end_date'])
+            # Initialize is_upcoming_week to False at the start of each loop
+            is_upcoming_week = False
 
-
-            # Fix: Change logic for advancing to the next week after Friday night
+            # Check if this is the upcoming week based on the Paris time logic
             if not upcoming_week_found:
-                # Case 1: We are currently in this week (before Friday night)
+                week_start = parse_date_flexible(week_data['start_date'])
+                week_end = parse_date_flexible(week_data['end_date'])
+                now = datetime.now() + timedelta(hours=8)  # Adjust server time to Paris time
+
                 if week_start <= now <= week_end and not is_past_friday_night():
-                    is_upcoming_week = False
-                # Case 2: It's Friday night or later, so move to the next week as upcoming
+                    upcoming_week_found = True
+                    is_upcoming_week = True
                 elif week_start > now or (week_start <= now <= week_end and is_past_friday_night()):
-                    if week_start > now:  # This means it's already past the current week
-                        upcoming_week_found = True
-                        is_upcoming_week = True
-                    else:
-                        is_upcoming_week = False
-            else:
-                is_upcoming_week = False
+                    upcoming_week_found = True
+                    is_upcoming_week = True
 
             filtered_weeks[week_key] = week_data
             detailed_schedule_by_week.append((week_key, week_schedule, event, is_upcoming_week))
@@ -214,6 +207,7 @@ def filter_weeks_with_colles(group):
         previous_week_data = week_data
 
     return filtered_weeks, detailed_schedule_by_week
+
 
 
 
