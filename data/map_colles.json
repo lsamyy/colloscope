@@ -11,7 +11,7 @@
         "heure": "15:30",
         "professeur": "Maillot",
         "matiere": "Mathématiques",
-	"salle": "A205"
+	"salle": "A215"
     },
     "m3": {
         "jour": "Lundi",
@@ -32,7 +32,7 @@
         "heure": "16:30",
         "professeur": "Maillot",
         "matiere": "Mathématiques",
-	"salle": "A205"
+	"salle": "A215"
     },
     "m6": {
         "jour": "Lundi",

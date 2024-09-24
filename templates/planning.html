@@ -219,20 +219,15 @@
 
         // Function to scroll to the upcoming week block
         function scrollToUpcomingWeek() {
-            const now = new Date();
-            const currentDay = now.getDay();  // 5 = Friday
-            const currentHour = now.getHours();
-            
-            // Check if it's Friday after 21:00 or later
-            const isPastFridayNight = (currentDay === 5 && currentHour >= 21) || currentDay > 5;
-            
             // Find the upcoming week block
             const upcomingBlock = document.querySelector('.week-block.upcoming');
             
-            if (upcomingBlock && isPastFridayNight) {
+            // Scroll to the upcoming week block if it exists
+            if (upcomingBlock) {
                 upcomingBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
+
     </script>
 </body>
 </html>

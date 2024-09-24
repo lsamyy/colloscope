@@ -29,6 +29,11 @@
             "date": "2024-09-21",
             "title": "Correction du colloscope et nouvelle page",
             "description": "Les nouveaux créneaux de Zemmour ont été ajoutés. Nouvelle page 'mises à jour' ajoutée."
+        },
+        {
+            "date": "2024-09-24",
+            "title": "Nouvelle salle pour Maillot (Maths)",
+            "description": "Les colles de maths avec Maillot ont dès maintenant lieu en A215, et non en A205."
         }
     ]
 }
