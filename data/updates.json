@@ -34,6 +34,11 @@
             "date": "2024-09-24",
             "title": "Nouvelle salle pour Maillot (Maths)",
             "description": "Les colles de maths avec Maillot ont dès maintenant lieu en A215, et non en A205."
+        },
+        {
+            "date": "2024-09-26",
+            "title": "Nouveau favicon pour le site",
+            "description": "Poulet"
         }
     ]
 }
