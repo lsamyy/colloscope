@@ -26,10 +26,10 @@
     "DS4": {
         "date": "28/09/2024",
         "matiere": "Philosophie",
-        "heure_debut": "08:00",
-        "heure_fin": "12:00",
+        "heure_debut": "08:30",
+        "heure_fin": "12:30",
         "salle": "salle inconnue",
-        "notes": "Horaire à déterminer"
+        "notes": "Salle à déterminer"
     },
     "DS5": {
         "date": "05/10/2024",
