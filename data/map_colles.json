@@ -109,7 +109,7 @@
         "heure": "17:30",
         "professeur": "C. Chouen",
         "matiere": "Lettres",
-	"salle": "F003"
+	"salle": "A2XX"
     },
     "f3": {
         "jour": "Jeudi",
@@ -123,7 +123,7 @@
         "heure": "18:30",
         "professeur": "C. Chouen",
         "matiere": "Lettres",
-	"salle": "F003"
+	"salle": "A2XX"
     },
     "sh1": {
         "jour": "Mardi",
